@@ -10,9 +10,15 @@ interface formFoodProps {
   title: string;
   submitText: string;
   food?: FoodProps;
+  afterSubmitCallback?: () => void;
 }
 
-function FormFood({ title, submitText, food }: formFoodProps) {
+function FormFood({
+  title,
+  submitText,
+  food,
+  afterSubmitCallback,
+}: formFoodProps) {
   const { addFood, updateFood } = useFoods();
 
   const form = useRef<FormHandles>(null);
@@ -26,8 +32,9 @@ function FormFood({ title, submitText, food }: formFoodProps) {
             id: food.id,
             available: food.available,
           } as FoodProps);
+      afterSubmitCallback && afterSubmitCallback();
     },
-    [addFood, food, updateFood]
+    [addFood, afterSubmitCallback, food, updateFood]
   );
 
   return (

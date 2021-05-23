@@ -13,6 +13,7 @@ function ModalEditFood({ isOpen, onRequestClose, food }: ModalEditFoodProps) {
         title={"Editar Prato"}
         submitText={"Editar Prato"}
         food={food}
+        afterSubmitCallback={onRequestClose}
       />
     </Modal>
   );

@@ -6,7 +6,11 @@ interface modalAddFoodProps extends Omit<ModalProps, "children"> {}
 export function ModalAddFood({ isOpen, onRequestClose }: modalAddFoodProps) {
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
-      <FormFood title={"Novo Prato"} submitText={"Adicionar Prato"} />
+      <FormFood
+        title={"Novo Prato"}
+        submitText={"Adicionar Prato"}
+        afterSubmitCallback={onRequestClose}
+      />
     </Modal>
   );
 }
